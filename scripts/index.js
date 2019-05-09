@@ -7,14 +7,26 @@ let mountCard = () => {
     let cardContainer = document.querySelector(`.card_Container`)
 
     tl
-      .to(cardContainer, .5, { y: '-310'})
+      .to(cardContainer, .5, { y: -310})
       .play()
 }
 
 let mountSite = () => {
-  if (!document.querySelector('.site_Container')){
-    Container.appendChild(site(clearPhoto))
-  }
+  let siteContainer = document.querySelector('.site_Container')
+  //If the site is not already on the DOM, append it.
+  if (!siteContainer){Container.appendChild(site(clearPhoto))}
+  //if it is on the DOM, toggle the card
+  else {toggleCard()}
+}
+
+let toggleCard = () => {
+    let card = document.querySelector(`.card_Container`)
+    let site = document.querySelector('.site_Container')
+    let tl = new TimelineMax({paused: true})
+    tl
+      .to(card, .5, {x: '-100%'})
+      .to(site, .5, {x: 0}, '-=.5')
+      .play()
 }
 
 let clearPhoto = () => {

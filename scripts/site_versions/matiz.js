@@ -4,7 +4,6 @@ function matiz(){
     Container.classList.add('site_Container')
     Container.classList.add('matiz')
     let card = document.querySelector(`.card_Container`)
-    // let exitButton = document.querySelector(`.${landingStyle.exit}`)
 
     let cta = document.createElement('div')
     cta.classList.add('cta')
