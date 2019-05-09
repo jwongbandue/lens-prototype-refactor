@@ -1,0 +1,42 @@
+@import 'shimmer.css';
+@import 'camera.css';
+@import 'card.css';
+@import 'site.css';
+
+.Quicksand {
+    font-family: 'Quicksand', sans-serif;
+}
+.Wrapper {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.Container {
+    border: 20px solid black;
+    width: 375px;
+    height: 812px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 45px;
+}
+.init_background {
+    height: 100%;
+    width: 100%;
+    background-image: url('./init_background.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.exitButton {
+    background-image: url('./assets/exit.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}

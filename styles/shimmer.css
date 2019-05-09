@@ -1,0 +1,46 @@
+.shimmer_Container {
+    border: 1px solid black;
+}
+.shimmer_dotContainer {
+    position: absolute;
+    bottom: 0;
+    animation: shimmer 4s infinite ease-in;
+    opacity: 0;
+}
+@keyframes shimmer {
+    0% {
+      opacity: 0;
+    }
+    5% {
+      opacity: 1;
+    }
+    99% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  /* PULSING BUTTON */
+.shimmer_dot{
+  margin: auto;
+  width: 6px;
+  height: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background-color: #fff;
+  text-align: center;
+  border: 1px solid #FFF;
+  border-radius: 50%;
+  animation: shadow-pulse 2s infinite;
+  position: absolute;
+}
+@keyframes shadow-pulse
+{
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+  }
+}

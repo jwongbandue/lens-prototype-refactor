@@ -1,0 +1,62 @@
+.card_Container {
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    border-radius: 15px;
+    background-color: #FFF
+}
+:global(.card){
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    border-radius: 4px;
+}
+.card_tab{
+    height: 3px;
+    width: 70px;
+    background-color: #D7D9DD;
+    margin: 10px auto;
+}
+.card_infoContainer{
+    width: 95%;
+    margin: 20px auto;
+    height: 75%;
+}
+.card_grid {
+    width: 95%;
+    margin: 20px auto;
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: 35% auto;
+    height: 170px
+}
+.card_header {
+    padding: 0px 0px 0px 12px;
+}
+.card_header h2 {
+    margin: 0
+}
+.card_header span {
+    color: #AAA;
+    font-size: 13px;
+}
+.card_copy {
+    width: 90%;
+    margin: auto;
+}
+.card_ribbon{
+    background-image: url('./assets/ribbon.png');
+    background-size: 700px;
+    background-position: center;
+    height: 100px;
+    width: 100px;
+    background-repeat: no-repeat;
+    margin: auto
+}
+.card_budweiserLogo {
+    background-image: url('./assets/Bud_logo.png');
+    background-size: 100%;
+    background-position: center;
+    height: 100px;
+    width: 100px;
+    background-repeat: no-repeat;
+    margin: auto
+}

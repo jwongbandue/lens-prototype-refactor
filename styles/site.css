@@ -1,0 +1,75 @@
+.site_Container{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background-color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat
+}
+.matiz {
+    background-image: url('./assets/matiz_site.png');
+}
+.stephanie {
+    background-image: url('./assets/stephanie_site.png')
+}
+.standard {
+    background-image: url('./assets/standard_site.png')
+}
+.cta {
+    position: absolute;
+    bottom: 0;
+    height: 146px;
+    width: 100%;
+    z-index: 1;
+}
+/* ======BUDWEISER STYLES ====== */
+.budContainer{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    background-color: #FFF;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.budVideo{
+    overflow: hidden;
+    background-color: #000;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.budVideo iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.budCopy {
+    width: 90%;
+    color: #111747;
+}
+.budCta{
+    height: 116px;
+    width: 100%;
+    z-index: 1;
+    background-color: #111747;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.budCta h1 {
+    display: block;
+    margin: auto;
+}
