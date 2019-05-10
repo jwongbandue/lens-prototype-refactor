@@ -1,5 +1,4 @@
 let shimmer = () => {
-    console.log('shimmer called')
     let Container = document.createElement('div')
     Container.classList.add('shimmer_Container')
 
@@ -46,7 +45,6 @@ let shimmer = () => {
 
 let shimmerInterval = (container) => {
     let interval = setInterval(() => {
-        console.log('shimmer interval')
         let shimmerContainer = document.querySelector('.shimmer_Container')
         if (shimmerContainer) {
             shimmerContainer.remove()

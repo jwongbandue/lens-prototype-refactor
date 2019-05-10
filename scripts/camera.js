@@ -1,6 +1,5 @@
 let camera = function () {
     //Initial background that is first clicked, remove this after video appends.
-    let initBackground = document.querySelector('.init_background')
     let Video = document.createElement('video')
     let shimmy = shimmerInterval(Container)
     Video.setAttribute('autoplay', true)
@@ -13,7 +12,6 @@ let camera = function () {
           Video.srcObject = stream;
           //Append the shimmer here in the video stream promise to prevent showing the shimmer before user allows use of camera. Set in a timeout to prevent appending shimmer from showing on top of initial background image.
           setTimeout(() => {
-            // initBackground.remove()
             Container.appendChild(shimm)
           }, 500)
         })
@@ -39,7 +37,6 @@ let camera = function () {
 let takePicture = e => {
     e.stopPropagation()
     let Container = document.querySelector('.Container')
-    let Wrapper = document.createElement('div')
     let canvas = document.createElement('canvas')
     let video = document.querySelector('.camera_video')
 
@@ -48,35 +45,37 @@ let takePicture = e => {
       onComplete: () => {
         //Mount the card DOM element so we can animate it, but also pass in mountSite (defined in index.js) as a callback to append the site to the DOM if the card is clicked.
         video.remove()
-        Wrapper.appendChild(card(mountSite))
-        Wrapper.appendChild(exitButton(clearPhoto))
+        Container.appendChild(card(mountSite))
+        Container.appendChild(exitButton(clearPhoto))
         mountCard()
       }
     })
 
+    //Create an output div
     let output = document.createElement('div')
     output.classList.add('camera_output')
-    
+    //The container for the photo
     let photoContainer = document.createElement('div')
     photoContainer.classList.add('camera_photoContainer')
-
+    //The actual photo
     let photo = document.createElement('div')
     photo.classList.add('camera_photo')
-
+    //Append the photo to the photoContainer
     photoContainer.appendChild(photo)
+    //And the photoContainer to the output
     output.appendChild(photoContainer)
 
+    //This is the stuff for drawing the image.
     let context = canvas.getContext('2d');
     canvas.width = video.offsetWidth;
     canvas.height = video.offsetHeight;
     context.drawImage(video, 0, 0, video.offsetWidth, video.offsetHeight);
-
     let data = canvas.toDataURL('image/png');
     photo.style.backgroundImage = `url("${data}")`
 
-    Wrapper.appendChild(output)
+    //Finally, append the child to the output
+    Container.appendChild(output)
 
-    Container.appendChild(Wrapper)
     tl
       .to(video, 1, {autoAlpha: 0})
       .play()

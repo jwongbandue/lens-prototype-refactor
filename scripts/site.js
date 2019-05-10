@@ -23,8 +23,5 @@ function site(cb){
         break
     }
 
-    let Container = document.createElement('div')
-    Container.appendChild(info)
-
-    return Container
+    return info
 }
