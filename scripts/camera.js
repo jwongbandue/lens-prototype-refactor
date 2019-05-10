@@ -1,6 +1,7 @@
 let camera = function () {
-    //Initial background that is first clicked, remove this after video appends.
+    console.log('video stream')
     let Video = document.createElement('video')
+    // Store shimmer interval in a variable to clear later in the event listener.
     let shimmy = shimmerInterval(Container)
     Video.setAttribute('autoplay', true)
     Video.setAttribute('playsinline', true)
@@ -11,9 +12,7 @@ let camera = function () {
         .then(function(stream) {
           Video.srcObject = stream;
           //Append the shimmer here in the video stream promise to prevent showing the shimmer before user allows use of camera. Set in a timeout to prevent appending shimmer from showing on top of initial background image.
-          setTimeout(() => {
-            Container.appendChild(shimm)
-          }, 500)
+          setTimeout(() => {Container.appendChild(shimm)}, 500)
         })
         .catch(function(error) {
           console.log("Something went wrong!:", error);
@@ -27,11 +26,37 @@ let camera = function () {
         //Clear shimmer interval and remove the shimmer container
         clearInterval(shimmy)
         let shimmerContainer = document.querySelector('.shimmer_Container')
+        //if the shimmer container is on the DOM, remove it.
         if (shimmerContainer) {shimmerContainer.remove()}
+        // take the picture
         takePicture(e)
     })
-    
+ 
+    //NOTE: When should buttonTimeout get called?
+    // buttonTimeout(shimmy)
+ 
     return Video
+}
+
+let buttonTimeout = (shimmerIntervalVariable) => {
+  console.log('buttonTimeout called')
+  //create the camera button
+  let button = document.createElement('div')
+  button.classList.add('camera_button')
+
+  //The timeout for appending the camera button on the DOM after there's been 4 seconds of shimmering.
+  const timeout = setTimeout(() => {
+    console.log('setTimeout called')
+    //Clear shimmer interval and remove the shimmer container
+    clearInterval(shimmerIntervalVariable)
+    let shimmerContainer = document.querySelector('.shimmer_Container')
+    // If the container for the shimmer exists, remove it
+    if (shimmerContainer) {shimmerContainer.remove()}
+    //append the button to the dom
+    Container.appendChild(button)
+  }, 4000)
+
+
 }
 
 let takePicture = e => {

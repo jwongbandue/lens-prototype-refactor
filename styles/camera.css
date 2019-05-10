@@ -34,3 +34,23 @@
     position: relative;
     overflow: hidden;
 }
+.camera_button {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    background: rgba(243, 208, 7, 0.582);
+    border: 1px solid rgb(243, 220, 115);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    animation: shadow-pulse 1s infinite;
+}
+@keyframes shadow-pulse
+{
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 35px rgba(0, 0, 0, 0);
+  }
+}

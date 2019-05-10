@@ -20,7 +20,6 @@ function matiz(){
         .play()
 
     Container.addEventListener('click', e => {
-        console.log('site clicked')
         //Prevent propagation here so that the even listener on the parent does not get called.
         e.stopPropagation()
         let toggleCardTL = new TimelineMax({
