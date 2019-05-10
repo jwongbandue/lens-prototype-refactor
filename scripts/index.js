@@ -73,11 +73,12 @@ let exitButton = (cb) => {
     return buttonContainer
 }
 // Define the initial background on the parent container
-Container.innerHTML = `
-    <div class='init_background'></div>
-`
+let backgroundImage = document.createElement('div')
+backgroundImage.classList.add('init_background')
+Container.appendChild(backgroundImage)
+
 // Add a click-event listener for opening the camera
-Container.addEventListener('click', e => {
+backgroundImage.addEventListener('click', e => {
     console.log('append stream')
     e.stopPropagation()
     e.preventDefault()
