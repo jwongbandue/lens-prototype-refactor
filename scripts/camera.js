@@ -1,5 +1,6 @@
+let timeout
 let camera = function () {
-    console.log('video stream')
+    console.log('camera called')
     let Video = document.createElement('video')
     // Store shimmer interval in a variable to clear later in the event listener.
     let shimmy = shimmerInterval(Container)
@@ -13,18 +14,22 @@ let camera = function () {
           Video.srcObject = stream;
           //Append the shimmer here in the video stream promise to prevent showing the shimmer before user allows use of camera. Set in a timeout to prevent appending shimmer from showing on top of initial background image.
           setTimeout(() => {Container.appendChild(shimm)}, 500)
+          // timeout = buttonTimeout(shimmy)
+          buttonTimeout(shimmy)
         })
         .catch(function(error) {
           console.log("Something went wrong!:", error);
         });
     }
-    
+
     // Click event listener for taking a picture
     Video.addEventListener('click', e => {
       e.preventDefault()
       e.stopPropagation()
         //Clear shimmer interval and remove the shimmer container
+        // console.log(timeout)
         clearInterval(shimmy)
+        // clearTimeout(timeout)
         let shimmerContainer = document.querySelector('.shimmer_Container')
         //if the shimmer container is on the DOM, remove it.
         if (shimmerContainer) {shimmerContainer.remove()}
@@ -32,21 +37,18 @@ let camera = function () {
         takePicture(e)
     })
  
-    //NOTE: When should buttonTimeout get called?
-    // buttonTimeout(shimmy)
- 
     return Video
 }
 
 let buttonTimeout = (shimmerIntervalVariable) => {
-  console.log('buttonTimeout called')
-  //create the camera button
-  let button = document.createElement('div')
-  button.classList.add('camera_button')
-
+  console.log('button timeout called')
   //The timeout for appending the camera button on the DOM after there's been 4 seconds of shimmering.
-  const timeout = setTimeout(() => {
-    console.log('setTimeout called')
+  setTimeout(() => {
+    //create the camera button
+    let button = document.createElement('div')
+    button.classList.add('camera_button')
+
+    button.addEventListener('click', e => { takePicture(e) })
     //Clear shimmer interval and remove the shimmer container
     clearInterval(shimmerIntervalVariable)
     let shimmerContainer = document.querySelector('.shimmer_Container')
@@ -64,6 +66,7 @@ let takePicture = e => {
     let Container = document.querySelector('.Container')
     let canvas = document.createElement('canvas')
     let video = document.querySelector('.camera_video')
+    let button = document.querySelector('.camera_button')
 
     let tl = new TimelineMax({
       paused: true,

@@ -19,7 +19,9 @@
 }
 .camera_photoContainer{
     height: 100%;
-    width: 100%
+    width: 100%;
+    border-radius: 25px;
+    overflow: hidden;
 }
 .camera_photo{
     height: 100%;

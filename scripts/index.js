@@ -38,6 +38,7 @@ let clearPhoto = () => {
     let cardContainer = document.querySelector(`.card_Container`)
     let shimmerContainer = document.querySelector(`.shimmer_Container`)
     let exitButton = document.querySelector('.exitButton')
+    let cameraButton = document.querySelector('.camera_button')
     let canvas = document.getElementsByTagName('canvas')[0]
     let site = document.querySelector(`.site_Container`) || document.querySelector(`.budContainer`)
     let tl = new TimelineMax({
@@ -45,10 +46,10 @@ let clearPhoto = () => {
       onComplete: () => {
         output.remove()
         cardContainer.remove()
-        // if (initBackground) {initBackground.remove()}
         if (shimmerContainer) {shimmerContainer.remove()}
         if (canvas) {canvas.remove()}
         if (exitButton) {exitButton.remove()}
+        if (cameraButton) {cameraButton.remove()}
         if (site) {site.remove()}
         Container.appendChild(camera())
       }
@@ -72,6 +73,7 @@ let exitButton = (cb) => {
     })
     return buttonContainer
 }
+
 // Define the initial background on the parent container
 let backgroundImage = document.createElement('div')
 backgroundImage.classList.add('init_background')
@@ -79,7 +81,7 @@ Container.appendChild(backgroundImage)
 
 // Add a click-event listener for opening the camera
 backgroundImage.addEventListener('click', e => {
-    console.log('append stream')
+    console.log('eventListener added')
     e.stopPropagation()
     e.preventDefault()
     Container.appendChild(camera())
